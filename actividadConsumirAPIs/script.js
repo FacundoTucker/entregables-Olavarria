@@ -1,10 +1,11 @@
 "use strict";
 
+let contenedor = document.getElementById("contenedor");
+
 fetch("https://fakestoreapi.com/products")
 .then(resp => resp.json())
 .then(data => {
     data.forEach(prod => {
-        let contenedor = document.getElementById("contenedor");
         let card = document.createElement("div");           
         card.classList.add("card");
 
@@ -18,4 +19,6 @@ fetch("https://fakestoreapi.com/products")
         contenedor.appendChild(card);
     })
 })
-.catch(err => console.log(err));
+.catch( err => {
+    contenedor.innerHTML = `<p>Error al cargar los productos. Por favor, intenta de nuevo más tarde.</p>`
+});
