@@ -35,5 +35,19 @@ export class Escuela {
         return this.listaDeProfesores;
     }
 
-    //averiguar como borrar Profesores y alumnos de un array
+    public despedirProfesor(nombre: string): void {
+        for (let i = 0; i < this.listaDeProfesores.length; i++) {
+            if (this.listaDeProfesores[i].obtenerNombre() === nombre) {
+                this.listaDeProfesores.splice(i, 1);  //de esta forma eliminamos del array
+            }
+        }
+    }
+    
+    public expulsarAlumno(nombre: string): void {
+        for (let i = 0; i < this.listaDeAlumnos.length; i++) {
+            if (this.listaDeAlumnos[i].obtenerNombre() === nombre) {
+                this.listaDeAlumnos.splice(i, 1);
+            }
+        }
+    }
 }
