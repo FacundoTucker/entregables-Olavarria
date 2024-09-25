@@ -50,8 +50,9 @@ escuela.mostrarProfesores().forEach(profesor =>{
     });
 });
 
-console.log("\nDespedimos al profesor Edgardo.");
+console.log("\nDespedimos al profesor Edgardo y expulsamos al Alumno Juancito");
 escuela.despedirProfesor("Edgardo");
+escuela.expulsarAlumno("Juancito");
 
 console.log("\nLista de profesores luego de un recorte salarial:");
 escuela.mostrarProfesores().forEach(profesor => {

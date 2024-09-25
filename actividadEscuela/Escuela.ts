@@ -36,18 +36,10 @@ export class Escuela {
     }
 
     public despedirProfesor(nombre: string): void {
-        for (let i = 0; i < this.listaDeProfesores.length; i++) {
-            if (this.listaDeProfesores[i].obtenerNombre() === nombre) {
-                this.listaDeProfesores.splice(i, 1);  //de esta forma eliminamos del array
-            }
-        }
+        this.listaDeProfesores = this.listaDeProfesores.filter(profesor => profesor.obtenerNombre() !== nombre);
     }
     
     public expulsarAlumno(nombre: string): void {
-        for (let i = 0; i < this.listaDeAlumnos.length; i++) {
-            if (this.listaDeAlumnos[i].obtenerNombre() === nombre) {
-                this.listaDeAlumnos.splice(i, 1);
-            }
-        }
+        this.listaDeAlumnos = this.listaDeAlumnos.filter(alumno => alumno.obtenerNombre() !== nombre);
     }
 }
