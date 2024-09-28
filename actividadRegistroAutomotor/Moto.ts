@@ -1,42 +1,65 @@
 import { Rueda } from "./Rueda";
 
 export class Moto {
-    // Propiedades
+    //propiedades
     private marca: string;
     private modelo: string;
     private color : string;
     private ruedas: Rueda[];
+    private patente : string;
 
-    // Constructor
-    constructor(marca: string, modelo: string, color : string, ruedas: Rueda[]) {
+    //constructor
+    constructor(marca: string, modelo: string, color : string, ruedas: Rueda[], patente : string) {
         this.marca = marca;
         this.modelo = modelo;
         this.color = color;
         this.ruedas = ruedas;
+        this.patente = patente;
     }
 
-    // Métodos
+    //metodos
+
+    //getters
     public getMarca(): string {
-        return `Marca: ${this.marca}`;
+        return this.marca;
     }
-
     public getModelo(): string {
-        return `Modelo: ${this.modelo}`;
+        return this.modelo;
     }
-
     public getColor(): string {
-        return `Color: ${this.color}`;
+        return this.color;
+    }
+    public getRuedas(): number[] {
+        return this.ruedas.map(rueda => rueda.getTamañoRueda());
+    }
+    public getPatente(): string{
+        return this.patente;
     }
 
-    public getRuedas(): Rueda[] {
-        return this.ruedas;
+    //setters
+    public setMarca(marca : string): void {
+        if(marca != undefined && marca != ""){
+            this.marca = marca;
+        }
     }
-
-    public setRuedas(ruedas : Rueda[]){
-        this.ruedas = ruedas;
+    public setModelo(modelo : string): void{
+        if(modelo != undefined && modelo != ""){
+            this.modelo = modelo;
+        }
     }
-
-    public setColor(color : string){
-        this.color = color;
+    public setColor(color : string): void{
+        if(color != undefined && color != ""){
+            this.color = color;
+        }
+    }
+    public setRuedas(ruedas : Rueda[]): void{
+        if(ruedas != undefined && ruedas.length >= 4){
+            this.ruedas = ruedas;
+        }
+    }
+    public setPatente(patente : string): void{
+        if(patente != undefined && patente.length >= 6){
+            this.patente = patente;
+        } 
     }
 }
