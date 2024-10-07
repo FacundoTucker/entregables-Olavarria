@@ -9,12 +9,17 @@ const ruedasSegundoAuto: Rueda[] = [new Rueda(15.5), new Rueda(15.5), new Rueda(
 const ruedasPrimerMoto: Rueda[] = [new Rueda(17), new Rueda(17)];
 const ruedasPrimerCamion: Rueda[] = [new Rueda(20), new Rueda(20), new Rueda(20), new Rueda(20), new Rueda(20), new Rueda(20)];
 
+let autoSuran : Auto = new Auto("Volswagen", "Suran", ruedasPrimerAuto,"AC390ZZ");
+let autoFiesta : Auto = new Auto("Ford", "Fiesta", ruedasSegundoAuto,"B222222");
+let motoHornet : Moto = new Moto("Honda", "Hornet", "Azul plateado", ruedasPrimerMoto,"ACT999");
+let camionTector : Camion = new Camion("Iveco", "Tector", 5000, ruedasPrimerCamion,"ZZ456CC");
+
 const registroAutomotor : RegistroAutomotor = new RegistroAutomotor("Facundo SA");
 
-registroAutomotor.agregarAuto(new Auto("Volswagen", "Suran", ruedasPrimerAuto,"AC390ZZ"));
-registroAutomotor.agregarAuto(new Auto("Ford", "Fiesta", ruedasSegundoAuto,"B222222"));
-registroAutomotor.agregarMoto(new Moto("Honda", "Hornet", "Azul plateado", ruedasPrimerMoto,"ACT999"));
-registroAutomotor.agregarCamion(new Camion("Iveco", "Tector", 5000, ruedasPrimerCamion,"ZZ456CC"));
+registroAutomotor.agregarAuto(autoSuran);
+registroAutomotor.agregarAuto(autoFiesta);
+registroAutomotor.agregarMoto(motoHornet);
+registroAutomotor.agregarCamion(camionTector);
 
 console.log(registroAutomotor.getNombre() + "\n");      //get registro
 
