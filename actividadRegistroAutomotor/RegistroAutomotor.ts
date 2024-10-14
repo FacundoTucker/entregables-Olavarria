@@ -3,14 +3,12 @@ import { Moto } from "./Moto";
 import { Camion } from "./Camion";
 import { Rueda } from "./Rueda";
 
-export class RegistroAutomotor{
-    //propiedades
-    private nombre : string;
+export class RegistroAutomotor {
+    private nombre: string;
     private listaAutos : Auto[];
     private listaCamiones : Camion[];
     private listaMotos : Moto[];
 
-    //constructor
     constructor(nombre : string){
         this.nombre = nombre;
         this.listaAutos = [];
@@ -18,9 +16,10 @@ export class RegistroAutomotor{
         this.listaMotos = [];
     }
 
-    //metodos
-
     //getters
+    public getNombre(): string {
+        return this.nombre;
+    }
     public getListaAutos(): Auto[] {
         const copiaAutos : Auto[] = this.listaAutos.map(libro => ({...libro}) as Auto); //* forma implementada por mauricio en la clase el lunes
         console.log("Autos:");
@@ -36,31 +35,27 @@ export class RegistroAutomotor{
         console.log("Camiones:");
         return copiaCamiones;
     }
-    public getNombre(): string{
-        return this.nombre;
-    }
 
     //setters
-    public setNombre(nombre : string):void {
-        this.nombre = nombre;
+    public setNombre(nombre : string): void{
+        if(nombre != undefined){
+            this.nombre = nombre;
+        }
     }
 
     //metodos agregar
-    public agregarAuto(marca : string, modelo : string, ruedas : Rueda[], patente : string) : void {
-        if(marca && modelo && patente != "" && ruedas.length >= 4){
-            const auto : Auto = new Auto(marca, modelo, ruedas, patente);
+    public agregarAuto(auto : Auto) : void {
+        if(auto != undefined){
             this.listaAutos.push(auto);
         }
     }
-    public agregarMoto(marca : string, modelo : string, color : string, ruedas : Rueda[], patente : string) : void {
-        if(marca && modelo && color && patente != "" && ruedas.length >= 2){
-            const moto : Moto = new Moto(marca, modelo, color, ruedas, patente)
+    public agregarMoto(moto : Moto) : void {
+        if(moto != undefined){
             this.listaMotos.push(moto);
         }
     }
-    public agregarCamion(marca : string, modelo : string, capacidadCarga : number, ruedas : Rueda[], patente : string ) : void {
-        if(marca && modelo && patente != "" && capacidadCarga > 0 && ruedas.length >= 4){
-            const camion : Camion = new Camion (marca, modelo, capacidadCarga,ruedas ,patente);
+    public agregarCamion(camion : Camion) : void {
+        if(camion != undefined){
             this.listaCamiones.push(camion);
         }
     }
