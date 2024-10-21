@@ -1,14 +1,12 @@
 export abstract class Personaje {
     //atributos
     protected nombre : string;
-    protected nivel : number;
-    protected puntosDeVida : number;
+    protected nivel : number = 1;
+    protected puntosDeVida : number = 100;
 
     //constructor
     constructor(nombre : string){
         this.nombre = nombre;
-        this.nivel = 1;
-        this.puntosDeVida = 100;
     }
 
     //getters
@@ -42,6 +40,6 @@ export abstract class Personaje {
     //metodos
     abstract atacar(): void;
     abstract defender(): void;
-    abstract ataqueEspecial(): void;
+    abstract ataqueMejorado(): void;
     abstract subirDeNivel(): void;
 }

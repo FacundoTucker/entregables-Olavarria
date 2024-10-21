@@ -1,13 +1,13 @@
 import { Personaje } from "./Personaje";
+import { SuperMago } from "./SuperMago";
 
 export class Mago extends Personaje {
     //atributos
-    private mana : number;
+    protected mana : number = 50;
 
     //constructor
     constructor(nombre : string){
         super(nombre)
-        this.mana = 50;
     }
 
     //getter y setter
@@ -29,19 +29,25 @@ export class Mago extends Personaje {
         console.log(this.nombre + " se ha colocado un escudo magico.")
     }
 
-    public ataqueEspecial(): void {
+    public ataqueMejorado(): void {
         if(this.nivel >= 2 && this.mana >= 10){
             console.log(this.nombre + " ha lanzado una bola de fuego.");
             this.mana -= 10;
+        }else if(this.nivel <= 1){
+            console.log(this.nombre + " necesita ser nivel 2 o superior para poder utilizar su ataque mejorado. Nivel actual: " + this.nivel)
         }else {
-            console.log(this.nombre + " necesita ser nivel 2 o superior para poder utilizar su ataque especial. Nivel actual: " + this.nivel)
+            console.log("No dispones de mana suficiente para realizar el ataque mejorado.")
         }
     }
 
     public subirDeNivel(): void {
-        this.nivel++;
-        this.puntosDeVida += 10;
-        this.mana += 20;
-        console.log(this.nombre + " ha subido a nivel " + this.nivel);
+        if(this.nivel < 9){
+            this.nivel++;
+            this.puntosDeVida += 5;
+            this.mana += 5;
+            console.log(this.nombre + " ha subido a nivel " + this.nivel);
+        }else{
+            console.log(this.nombre + " ha alcanzado el nivel maximo. Evoluciona para seguir progresando.")
+        }
     }
 }

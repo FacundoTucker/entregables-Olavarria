@@ -2,12 +2,11 @@ import { Personaje } from "./Personaje";
 
 export class Arquero extends Personaje{
     //atributos
-    private flechasVenenosas : number;
+    protected flechasVenenosas : number = 5;
 
     //constructor
     constructor(nombre : string){
         super(nombre);
-        this.flechasVenenosas = 5;
     }
 
     //getter y setter
@@ -26,22 +25,28 @@ export class Arquero extends Personaje{
     }
 
     public defender(): void {
-        console.log(this.nombre + " se ha cubierto con su arco.");
+        console.log(this.nombre + " se ha cubierto con su capa.");
     }
 
-    public ataqueEspecial(): void {
-        if(this.nivel >= 2){
+    public ataqueMejorado(): void {
+        if(this.nivel >= 2 && this.flechasVenenosas > 0){
             console.log(this.nombre + " ha lanzado una flecha venenosa.");
             this.flechasVenenosas --;
-        }else{
-            console.log(this.nombre + " necesita ser nivel 2 o superior para realizar su ataque especial. Nivel actual: " + this.nivel);
+        }else if(this.nivel <= 1){
+            console.log(this.nombre + " necesita ser nivel 2 o superior para realizar su ataque mejorado. Nivel actual: " + this.nivel);
+        }else {
+            console.log("No dispones de flechas venenosas suficientes para realizar el ataque mejorado.")
         }
     }
 
     public subirDeNivel(): void {
-        this.nivel ++;
-        this.puntosDeVida += 10;
-        this.flechasVenenosas += 2;
-        console.log(this.nombre + " ha subido a nivel " + this.nivel);
+        if(this.nivel < 9){
+            this.nivel++;
+            this.puntosDeVida += 5;
+            this.flechasVenenosas += 2;
+            console.log(this.nombre + " ha subido a nivel " + this.nivel);
+        }else{
+            console.log(this.nombre + " ha alcanzado el nivel maximo. Evoluciona para seguir progresando.")
+        }
     }
 }
